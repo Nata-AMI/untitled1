@@ -1,13 +1,13 @@
 public class Main {
     public static void main(String[] args) {
-        double currentaccount = 100;
-        double endaccount;
+        double currentAccount = 100;
+        double endAccount;
         double added = 1050;
         if (added >= 1000) {
-            endaccount = currentaccount + added + added * 0.01;
+            endAccount = currentAccount + added + added * 0.01;
         } else {
-            endaccount = currentaccount + added;
+            endAccount = currentAccount + added;
         }
-        System.out.println(endaccount);
+        System.out.println(endAccount);
     }
 }
