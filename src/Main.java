@@ -1,13 +1,37 @@
 public class Main {
     public static void main(String[] args) {
-        double currentAccount = 100;
-        double endAccount;
-        double added = 1050;
-        if (added >= 1000) {
-            endAccount = currentAccount + added + added * 0.01;
-        } else {
-            endAccount = currentAccount + added;
+        // TODO: подставлять номер карты нужно сюда между двойными кавычками, без пробелов
+        String number = "5351719427810741";
+        System.out.println(String.format("Result is %s", isValidCardNumber(number) ? "OK" : "FAIL"));
+    }
+
+    public static boolean isValidCardNumber(String number) {
+        if (number == null) {
+            return false;
         }
-        System.out.println(endAccount);
+
+        if (number.length() != 16) {
+            return false;
+        }
+
+        long result = 0;
+        for (int i = 0; i < number.length(); i++) {
+            int digit;
+            try {
+                digit = Integer.parseInt(number.charAt(i) + "");
+            } catch (NumberFormatException e) {
+                return false;
+            }
+
+            if (i % 2 == 0) {
+                digit *= 2;
+                if (digit > 9) {
+                    digit -= 9;
+                }
+            }
+            result += digit;
+        }
+
+        return (result != 0) && (result % 10 == 0);
     }
 }
